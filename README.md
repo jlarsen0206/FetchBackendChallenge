@@ -3,7 +3,6 @@
 ## Installations
 
 Install the appropriate .NET 7.0 SDK at https://dotnet.microsoft.com/en-us/download
-No NuGet packages need to be added for this project
 
 ## Usage
 
