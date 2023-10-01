@@ -1,0 +1,24 @@
+1. Why did you choose the tools, libraries, and language you used for the coding exercise?
+I chose to use .NET (7.0) and C# for this coding exercise because ASP.NET Core is the web framework
+that I'm most familiar with.  I did not need to use any additional libraries other than those provided by
+.NET by default (System.Linq, etc). It is also easy to utilize Swagger UI with ASP.NET Core, which was 
+helpful while testing the API endpoints.
+
+2. What are the advantages and disadvantages of your solution?
+The advantage of my solution is that my implementation of SpendPoints (called by the /spend endpoint) is O(nlog(n))
+due to my use of a Priority Queue and a Dictionary to determine which transactions' points will be spent and to 
+update the total points for the Payer. The brute force approach of iteration using a list of points transactions
+(objects with payer, points, and timestamp information) would take O(n^2) time to go through all points transactions
+and select the new earliest transaction at each iteration. The downside of my approach is that it means that 
+AddPointsTransaction (invoked by /add endpoint) will now take O(log(n)) time as opposed to O(1) time since we must
+enqueue every entry in the Priority Queue. Another downside of this approach is that it now uses multiple data 
+structures that use roughly linear space, namely the Dictionary and the Priority Queue, as opposed to one used 
+by the brute force solution (a single List of PointsTransaction objects).
+
+3. What has been a favorite school/personal project thus far? What about it that challenged you?
+My favorite project I've done so far was an application that used a Red-Black Tree to search a dataset of NBA 
+players based on different criteria (team, statistics such as points per game, etc.). This was a school
+project I did with three other students using Java and JUnit. I was responsible for the backend portion of the 
+project and implementing the search functionality. It was quite challenging to work with a more complex data
+structure for the project, and it was also challenging to use Red-Black trees to implement searching on 
+multiple different criteria.
